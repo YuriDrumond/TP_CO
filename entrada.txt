@@ -1,0 +1,35 @@
+int main() {
+    int x = 10;
+    float y = 3.14;
+    char letra1 = 'a';
+
+    int idade = 25;
+    int idade_2 = idade + 5;
+
+    x = x + 1;
+    y = y * 2;
+    x = x - 3;
+    x = x / 2;
+
+    if (x > 5) {
+        x = x + 100;
+    } else {
+        x = 0;
+    }
+
+    while (x < 200) {
+        x = x + 10;
+    }
+
+    if (y == 3.14) {
+        y = y - 1.0;
+    }
+
+	printf ("PARA NOSSA ALEGRIA");
+
+	//PARA NOSSA ALEGRIA
+
+    @ # $ %
+
+    return 0;
+}
