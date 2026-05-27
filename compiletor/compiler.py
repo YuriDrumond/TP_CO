@@ -2,9 +2,7 @@ import re
 import sys
 import os
 
-# ═══════════════════════════════════════════════════════════════════
-#  LÉXICO
-# ═══════════════════════════════════════════════════════════════════
+# LÉXICO LÉXICO LÉXICO
 
 KEYWORDS = {
     "if", "else", "while", "for", "do",
@@ -67,9 +65,8 @@ def gerar_saida(tokens):
     )
 
 
-# ═══════════════════════════════════════════════════════════════════
-#  SINTÁTICO
-# ═══════════════════════════════════════════════════════════════════
+#  SINTÁTICO SINTÁTICO SINTÁTICO
+
 
 TIPOS_BASICOS = {"int", "float", "double", "char", "void"}
 
@@ -85,9 +82,7 @@ class Parser:
         self.pos = 0
         self.erros = []
 
-    # ──────────────────────────────────────────────────────────────
-    # UTILIDADES
-    # ──────────────────────────────────────────────────────────────
+    # BAGULHOS BAGULHOS BAGULHOS
 
     def atual(self):
         if self.pos < len(self.tokens):
@@ -155,9 +150,7 @@ class Parser:
     def registrar(self, erro):
         self.erros.append(erro)
 
-    # ──────────────────────────────────────────────────────────────
-    # RECUPERAÇÃO
-    # ──────────────────────────────────────────────────────────────
+    # RECUPERAÇÃO RECUPERAÇÃO RECUPERAÇÃO
 
     def sincronizar_stmt(self):
         while self.tipo() != "EOF":
@@ -191,9 +184,9 @@ class Parser:
 
             self.pos += 1
 
-    # ──────────────────────────────────────────────────────────────
-    # PROGRAMA
-    # ──────────────────────────────────────────────────────────────
+
+    # CABECAO CABECAO CABECAO
+
 
     def parse_programa(self):
 
@@ -217,10 +210,6 @@ class Parser:
                 if self.pos == inicio:
                     self.pos += 1
 
-    # ──────────────────────────────────────────────────────────────
-    # DIRETIVAS
-    # ──────────────────────────────────────────────────────────────
-
     def parse_diretiva(self):
 
         self.consumir(tipo_esp="PREPROCESSADOR")
@@ -235,9 +224,7 @@ class Parser:
         else:
             self.erro("Header esperado após diretiva")
 
-    # ──────────────────────────────────────────────────────────────
-    # TIPOS
-    # ──────────────────────────────────────────────────────────────
+    # TIPAGEM TIPAGEM TIPAGEM
 
     def parse_tipo(self):
 
@@ -252,10 +239,6 @@ class Parser:
             )
 
         self.pos += 1
-
-    # ──────────────────────────────────────────────────────────────
-    # DECLARAÇÕES
-    # ──────────────────────────────────────────────────────────────
 
     def parse_decl_global(self):
 
@@ -359,9 +342,7 @@ class Parser:
             self.consumir(tipo_esp="ATRIBUICAO")
             self.parse_expr("valor de inicialização")
 
-    # ──────────────────────────────────────────────────────────────
-    # BLOCOS
-    # ──────────────────────────────────────────────────────────────
+    # BLOQUINHO BLOQUINHO BLOQUINHO
 
     def parse_bloco(self):
 
@@ -372,9 +353,8 @@ class Parser:
 
         self.consumir("}")
 
-    # ──────────────────────────────────────────────────────────────
-    # STATEMENTS
-    # ──────────────────────────────────────────────────────────────
+    
+    # STATEMENTS UI UI UI
 
     def parse_stmt(self):
     
@@ -420,9 +400,8 @@ class Parser:
             self.registrar(str(e))
             self.sincronizar_stmt()
 
-    # ──────────────────────────────────────────────────────────────
-    # CONTROLE
-    # ──────────────────────────────────────────────────────────────
+    
+    # DEFINICOES DEFINICOES DEFINICOES
 
     def parse_if(self):
 
@@ -549,9 +528,8 @@ class Parser:
         if not self.vv(";"):
             self.parse_expr("valor de retorno")
 
-    # ──────────────────────────────────────────────────────────────
-    # EXPRESSÕES
-    # ──────────────────────────────────────────────────────────────
+
+    # LOCAL PARA LIVRE EXPRESSAO
 
     def parse_expr(self, contexto="expressão"):
         self.parse_atrib(contexto)
@@ -681,9 +659,8 @@ class Parser:
             self.parse_expr()
 
 
-# ═══════════════════════════════════════════════════════════════════
-#  INTERFACE
-# ═══════════════════════════════════════════════════════════════════
+
+#  INTERFACE - BELEZA IMPORTA
 
 def analisar_sintatico(tokens):
 
@@ -707,9 +684,7 @@ def analisar_sintatico(tokens):
     return True
 
 
-# ═══════════════════════════════════════════════════════════════════
-#  MAIN
-# ═══════════════════════════════════════════════════════════════════
+
 
 def main():
 
